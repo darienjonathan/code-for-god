@@ -4,7 +4,7 @@ import "firebase/database";
 import "firebase/firestore";
 import "firebase/storage";
 import "firebase/functions";
-import firebaseConfig from "@/configs/firebase";
+import firebaseConfig from "@/config/firebaseConfig";
 
 const getAppWithConfig = (config = firebaseConfig) => {
   const configKeys = Object.keys(config);
