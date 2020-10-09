@@ -1,0 +1,20 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "plugin:vue/essential",
+    "eslint:recommended",
+    "@vue/prettier",
+    "@vue/standard"
+  ],
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "rules": {
+    "quotes": [1, "double"],
+    "semi": [1, "always"]
+  },
+  "plugins": ["import"]
+}
