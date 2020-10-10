@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Top from "@/views/Top.vue";
 import Keluarga from "@/views/Keluarga.vue";
 import KeluargaItem from "@/views/KeluargaItem.vue";
 import Umum from "@/views/Umum.vue";
@@ -10,8 +11,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Keluarga",
-    component: Keluarga
+    name: "Top",
+    component: Top
   },
   {
     path: "/keluarga",

@@ -2,18 +2,10 @@
   <div>
     <div v-if="item">
       <div class="my-10">
-        <h1 class="d.flex text-center">{{ item.ts.dateNum }}</h1>
-        <h2 class="d.flex text-center">{{ item.ts.str }}</h2>
+        <h1 class="d.flex text-center">{{ item.title }}</h1>
+        <h2 class="d.flex text-center">{{ item.subtitle }}</h2>
       </div>
-      <v-breadcrumbs :items="paths">
-        <template v-slot:item="{ item }">
-          <v-breadcrumbs-item>
-            <router-link :to="item.to">
-              {{ item.url }}
-            </router-link>
-          </v-breadcrumbs-item>
-        </template>
-      </v-breadcrumbs>
+      <breadcrumbs :urlFn="breadcrumbsUrlFn" />
       <v-expansion-panels>
         <v-expansion-panel v-for="[uid, content] in item.contents" :key="uid">
           <v-expansion-panel-header>{{ content.title }}</v-expansion-panel-header>
@@ -30,27 +22,27 @@
 </template>
 <script>
 import Wordpress from "@/components/Wordpress";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import upperCaseFirstLetter from "@/lib/upperCaseFirstLetter.js";
 export default {
   name: "ContentItem",
   components: {
-    Wordpress
+    Wordpress,
+    Breadcrumbs
   },
   props: ["id", "item"],
-  async mounted() {
+  data() {
+    return {
+      breadcrumbsUrlFn: undefined
+    };
+  },
+  mounted() {
     this.preparePath();
   },
   methods: {
     preparePath() {
-      if (!this.item || !this.id) {
-        return;
-      }
-      const splittedPaths = this.$route.path.split("/").filter(path => path.length);
-      const paths = splittedPaths.map((path, index) => ({
-        to: "/" + splittedPaths.slice(0, index + 1).join("/"),
-        url: path === this.id ? this.item.ts.dateNum : upperCaseFirstLetter(path)
-      }));
-      this.paths = paths;
+      this.breadcrumbsUrlFn = path =>
+        path === this.id ? this.item.title : upperCaseFirstLetter(path);
     }
   },
   watch: {
@@ -61,5 +53,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "~@/assets/css/main.css";
+@import "~@/assets/css/main.scss";
 </style>
