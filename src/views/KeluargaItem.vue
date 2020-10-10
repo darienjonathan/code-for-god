@@ -63,7 +63,6 @@ export default {
         to: "/" + splittedPaths.slice(0, index + 1).join("/"),
         url: path === this.id ? this.item.ts.dateNum : upperCaseFirstLetter(path)
       }));
-      console.log(paths);
       this.paths = paths;
     },
     async prepareItem() {

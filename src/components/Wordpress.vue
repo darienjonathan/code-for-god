@@ -16,10 +16,7 @@
 <script>
 export default {
   name: "Wordpress",
-  props: ["post"],
-  mounted() {
-    console.log(this.post);
-  }
+  props: ["post"]
 };
 </script>
 <style lang="scss" scoped>
