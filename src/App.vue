@@ -1,19 +1,37 @@
 <template>
   <v-app>
     <v-app-bar app class="app">
-      <div class="d-flex align-center">
-        <router-link class="mr-4" to="/keluarga">
-          Keluarga
-        </router-link>
-        <router-link class="mr-4" to="/umum">
-          Umum
-        </router-link>
+      <div class="flex align-center">
+        <div class="d-none d-lg-flex">
+          <div v-for="(content, id) in contentArr" :key="id">
+            <router-link v-if="content.to" :to="content.to" class="mr-4">
+              {{ content.title }}</router-link
+            >
+          </div>
+        </div>
+        <div class="d-lg-none d-flex align-center">
+          <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+          <span class="text-h6">Menu</span>
+        </div>
       </div>
-
       <v-spacer></v-spacer>
     </v-app-bar>
 
     <v-main>
+      <v-navigation-drawer absolute temporary v-model="drawer">
+        <v-list nav dense>
+          <v-list-item-group
+            v-model="group"
+            active-class="deep-purple--text text--accent-4"
+            v-for="(content, id) in contentArr"
+            :key="id"
+          >
+            <v-list-item v-if="content.to">
+              <router-link :to="content.to">{{ content.title }}</router-link>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
       <router-view></router-view>
     </v-main>
   </v-app>
@@ -28,15 +46,27 @@ import {
 } from "@/lib/firestore/collections";
 import dayjs from "@/lib/dayjs";
 import { mapMutations } from "vuex";
+import contents, { topContent } from "@/config/contents";
 
 export default {
   name: "App",
   data: () => ({
-    //
+    drawer: false,
+    group: null,
+    contentArr: []
   }),
-  async mounted() {
+  mounted() {
     this.prepareKeluarga();
     this.prepareUmum();
+    this.prepareContentArr();
+  },
+  watch: {
+    group() {
+      this.drawer = false;
+    },
+    $route() {
+      this.prepareContentArr();
+    }
   },
   methods: {
     ...mapMutations("keluarga", {
@@ -45,6 +75,9 @@ export default {
     ...mapMutations("umum", {
       setUmumItems: "setItems"
     }),
+    prepareContentArr() {
+      this.contentArr = this.$route.name === "Top" ? contents : [topContent, ...contents];
+    },
     async prepareKeluarga() {
       const keluargaDocs = await keluargaCollection.loadCollection({
         orderBy: ["ts", "asc"]

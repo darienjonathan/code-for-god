@@ -31,3 +31,10 @@ export default [
     text: "33 Renungan Natal inspiratif untuk mengalami masa-masa Adven yang bermakna"
   }
 ];
+
+export const topContent = {
+  name: "top",
+  title: "Top",
+  text: "",
+  to: "/"
+};
