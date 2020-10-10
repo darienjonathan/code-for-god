@@ -5,8 +5,8 @@
         <v-col d-flex class="col-12 col-md-4 col-lg-3" v-for="[uid, item] in items" :key="uid">
           <router-link class="router-link" :to="`/${contentUrl}/${uid}`">
             <v-card elevation="8" height="100%">
-              <v-card-title>{{ item.ts.dateNum }}</v-card-title>
-              <v-card-subtitle>{{ item.ts.str }}</v-card-subtitle>
+              <v-card-title>{{ item.title }}</v-card-title>
+              <v-card-subtitle>{{ item.subtitle }}</v-card-subtitle>
               <v-timeline dense>
                 <v-timeline-item
                   small

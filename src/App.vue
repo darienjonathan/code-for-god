@@ -58,8 +58,8 @@ export default {
       );
       keluargaDocs.map(([uid, doc], index) => {
         const time = dayjs.unix(doc.ts.seconds);
-        doc.ts.str = time.format("dddd, D MMMM YYYY");
-        doc.ts.dateNum = `Hari ${index + 1}`;
+        doc.title = `Hari ${index + 1}`;
+        doc.subtitle = time.format("dddd, D MMMM YYYY");
         doc.contents = contentDocs[index];
       });
       this.setKeluargaItems(keluargaDocs);
@@ -77,8 +77,8 @@ export default {
       );
       umumDocs.map(([uid, doc], index) => {
         const time = dayjs.unix(doc.ts.seconds);
-        doc.ts.str = time.format("dddd, D MMMM YYYY");
-        doc.ts.dateNum = `Hari ${index + 1}`;
+        doc.title = `Hari ${index + 1}`;
+        doc.subtitle = time.format("dddd, D MMMM YYYY");
         doc.contents = contentDocs[index];
       });
       this.setUmumItems(umumDocs);
