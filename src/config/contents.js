@@ -20,13 +20,14 @@ export default [
       "Pilih sendiri berbagai bahan Natal digital yang tersedia dalam berbagai format untuk mengalami Natal yang bermakna!"
   },
   {
-    name: "33khotbah",
+    name: "khotbah",
     title: "33 Kumpulan Khotbah Natal",
     text:
-      "33 Kumpulan Khotbah Natal berdasarkan kebenaran firman Tuhan untuk memaknai Natal secara lebih mendalam"
+      "33 Kumpulan Khotbah Natal berdasarkan kebenaran firman Tuhan untuk memaknai Natal secara lebih mendalam",
+    to: "/khotbah"
   },
   {
-    name: "33renungan",
+    name: "renungan",
     title: "33 Renungan Natal Inspiratif",
     text: "33 Renungan Natal inspiratif untuk mengalami masa-masa Adven yang bermakna"
   }
