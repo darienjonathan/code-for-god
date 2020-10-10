@@ -13,8 +13,8 @@
             ><wordpress :post="content.post"
           /></v-expansion-panel-content>
           <v-expansion-panel-content class="text-wrap full-height" v-else-if="content.url">
-            <iframe style="width: 100%; height: 100%;" :src="content.url"
-          /></v-expansion-panel-content>
+            <i-frame :url="content.url" />
+          </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
@@ -24,11 +24,13 @@
 import Wordpress from "@/components/Wordpress";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import upperCaseFirstLetter from "@/lib/upperCaseFirstLetter.js";
+import IFrame from "@/components/IFrame/Index";
 export default {
   name: "ContentItem",
   components: {
     Wordpress,
-    Breadcrumbs
+    Breadcrumbs,
+    IFrame
   },
   props: ["id", "item"],
   data() {
