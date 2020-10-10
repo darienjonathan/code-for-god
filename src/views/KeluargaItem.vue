@@ -11,6 +11,9 @@
           <v-expansion-panel-content class="text-wrap" v-if="content.post"
             ><wordpress :post="content.post"
           /></v-expansion-panel-content>
+          <v-expansion-panel-content class="text-wrap" v-else-if="content.url"
+            ><a :href="content.url">{{ content.url }}</a></v-expansion-panel-content
+          >
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
