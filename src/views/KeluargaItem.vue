@@ -20,9 +20,9 @@
           <v-expansion-panel-content class="text-wrap" v-if="content.post"
             ><wordpress :post="content.post"
           /></v-expansion-panel-content>
-          <v-expansion-panel-content class="text-wrap" v-else-if="content.url"
-            ><a :href="content.url">{{ content.url }}</a></v-expansion-panel-content
-          >
+          <v-expansion-panel-content class="text-wrap full-height" v-else-if="content.url">
+            <iframe style="width: 100%; height: 100%;" :src="content.url"
+          /></v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
