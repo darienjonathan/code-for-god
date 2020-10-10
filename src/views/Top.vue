@@ -46,7 +46,7 @@ export default {
   height: 70%;
   background: #00ffff;
   @include md {
-    height: 100%;
+    height: 100vh;
   }
 }
 
