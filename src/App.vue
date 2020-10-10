@@ -127,7 +127,7 @@ export default {
       });
       khotbahDocs.map(([uid, doc], index) => {
         const time = dayjs.unix(doc.ts.seconds);
-        doc.title = `Hari ${index + 1}`;
+        doc.title = `Hari ${index + 1} ${doc.title ? "- " + doc.title : ""}`;
         doc.subtitle = time.format("dddd, D MMMM YYYY");
       });
       this.setKhotbahItems(khotbahDocs);
