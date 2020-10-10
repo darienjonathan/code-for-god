@@ -29,7 +29,8 @@ export default [
   {
     name: "renungan",
     title: "33 Renungan Natal Inspiratif",
-    text: "33 Renungan Natal inspiratif untuk mengalami masa-masa Adven yang bermakna"
+    text: "33 Renungan Natal inspiratif untuk mengalami masa-masa Adven yang bermakna",
+    to: "/renungan"
   }
 ];
 

@@ -7,6 +7,8 @@ import Umum from "@/views/Umum.vue";
 import UmumItem from "@/views/UmumItem.vue";
 import Khotbah from "@/views/Khotbah.vue";
 import KhotbahItem from "@/views/KhotbahItem.vue";
+import Renungan from "@/views/Renungan.vue";
+import RenunganItem from "@/views/RenunganItem.vue";
 
 Vue.use(VueRouter);
 
@@ -45,6 +47,16 @@ const routes = [
     path: "/khotbah/:id",
     name: "KhotbahItem",
     component: KhotbahItem
+  },
+  {
+    path: "/renungan",
+    name: "Renungan",
+    component: Renungan
+  },
+  {
+    path: "/renungan/:id",
+    name: "RenunganItem",
+    component: RenunganItem
   }
 ];
 

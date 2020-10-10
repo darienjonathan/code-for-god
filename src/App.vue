@@ -43,7 +43,8 @@ import {
   keluargaContentCollection,
   umumCollection,
   umumContentCollection,
-  khotbahCollection
+  khotbahCollection,
+  renunganCollection
 } from "@/lib/firestore/collections";
 import dayjs from "@/lib/dayjs";
 import { mapMutations } from "vuex";
@@ -60,6 +61,7 @@ export default {
     this.prepareKeluarga();
     this.prepareUmum();
     this.prepareKhotbah();
+    this.prepareRenungan();
     this.prepareContentArr();
   },
   watch: {
@@ -79,6 +81,9 @@ export default {
     }),
     ...mapMutations("khotbah", {
       setKhotbahItems: "setItems"
+    }),
+    ...mapMutations("renungan", {
+      setRenunganItems: "setItems"
     }),
     prepareContentArr() {
       this.contentArr = this.$route.name === "Top" ? contents : [topContent, ...contents];
@@ -131,6 +136,17 @@ export default {
         doc.subtitle = time.format("dddd, D MMMM YYYY");
       });
       this.setKhotbahItems(khotbahDocs);
+    },
+    async prepareRenungan() {
+      const renunganDocs = await renunganCollection.loadCollection({
+        orderBy: ["ts", "asc"]
+      });
+      renunganDocs.map(([uid, doc], index) => {
+        const time = dayjs.unix(doc.ts.seconds);
+        doc.title = `Hari ${index + 1} ${doc.title ? "- " + doc.title : ""}`;
+        doc.subtitle = time.format("dddd, D MMMM YYYY");
+      });
+      this.setRenunganItems(renunganDocs);
     }
   }
 };
