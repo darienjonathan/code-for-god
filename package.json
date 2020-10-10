@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
+    "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "dayjs": "^1.9.1",
     "firebase": "^7.23.0",
+    "lodash": "^4.17.20",
     "roboto-fontface": "*",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",

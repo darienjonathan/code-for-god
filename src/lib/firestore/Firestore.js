@@ -45,7 +45,6 @@ export default class Firestore {
     const query = this.buildQuery({ wheres, orderBy, limit });
     return query.onSnapshot(snapshot => {
       const data = this.dumpSnapshot(snapshot);
-      // eslint-disable-next-line no-console
       fn(data);
     });
   }
@@ -63,8 +62,6 @@ export default class Firestore {
       .onSnapshot()
       .then(snapshot => {
         const data = snapshot.exists ? snapshot.data() : null;
-        // eslint-disable-next-line no-console
-        console.log("[subscribe document]", this.path, id);
         fn(data);
       });
   }
