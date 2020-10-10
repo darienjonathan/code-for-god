@@ -1,11 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import keluarga from "@/store/keluarga";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
+  modules: {
+    keluarga: {
+      namespaced: true,
+      ...keluarga
+    }
+  }
 });
