@@ -32,7 +32,7 @@ export default class Firestore {
         ...doc.data()
       })
     );
-    return m;
+    return [...m.entries()];
   }
 
   async loadCollection({ wheres = [], orderBy, limit } = {}) {
