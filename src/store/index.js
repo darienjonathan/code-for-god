@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import khotbah from "@/store/khotbah";
+import renungan from "@/store/renungan";
 import keluarga from "@/store/keluarga";
 import umum from "@/store/umum";
 
@@ -19,6 +20,10 @@ export default new Vuex.Store({
     khotbah: {
       namespaced: true,
       ...khotbah
+    },
+    renungan: {
+      namespaced: true,
+      ...renungan
     }
   }
 });

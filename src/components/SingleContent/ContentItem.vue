@@ -6,10 +6,10 @@
         <h2 class="d.flex text-center">{{ item.subtitle }}</h2>
       </div>
       <breadcrumbs :urlFn="breadcrumbsUrlFn" />
-      <v-container>
+      <div style="height: 100vh">
         <wordpress v-if="item.post" :post="item.post" />
         <i-frame v-else-if="item.url" :url="item.url" />
-      </v-container>
+      </div>
     </div>
   </div>
 </template>
