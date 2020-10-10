@@ -42,7 +42,8 @@ import {
   keluargaCollection,
   keluargaContentCollection,
   umumCollection,
-  umumContentCollection
+  umumContentCollection,
+  khotbahCollection
 } from "@/lib/firestore/collections";
 import dayjs from "@/lib/dayjs";
 import { mapMutations } from "vuex";
@@ -58,6 +59,7 @@ export default {
   mounted() {
     this.prepareKeluarga();
     this.prepareUmum();
+    this.prepareKhotbah();
     this.prepareContentArr();
   },
   watch: {
@@ -74,6 +76,9 @@ export default {
     }),
     ...mapMutations("umum", {
       setUmumItems: "setItems"
+    }),
+    ...mapMutations("khotbah", {
+      setKhotbahItems: "setItems"
     }),
     prepareContentArr() {
       this.contentArr = this.$route.name === "Top" ? contents : [topContent, ...contents];
@@ -115,6 +120,17 @@ export default {
         doc.contents = contentDocs[index];
       });
       this.setUmumItems(umumDocs);
+    },
+    async prepareKhotbah() {
+      const khotbahDocs = await khotbahCollection.loadCollection({
+        orderBy: ["ts", "asc"]
+      });
+      khotbahDocs.map(([uid, doc], index) => {
+        const time = dayjs.unix(doc.ts.seconds);
+        doc.title = `Hari ${index + 1}`;
+        doc.subtitle = time.format("dddd, D MMMM YYYY");
+      });
+      this.setKhotbahItems(khotbahDocs);
     }
   }
 };

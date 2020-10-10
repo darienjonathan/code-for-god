@@ -6,30 +6,23 @@
         <h2 class="d.flex text-center">{{ item.subtitle }}</h2>
       </div>
       <breadcrumbs :urlFn="breadcrumbsUrlFn" />
-      <v-expansion-panels>
-        <v-expansion-panel v-for="[uid, content] in item.contents" :key="uid">
-          <v-expansion-panel-header>{{ content.title }}</v-expansion-panel-header>
-          <v-expansion-panel-content class="text-wrap" v-if="content.post"
-            ><wordpress :post="content.post"
-          /></v-expansion-panel-content>
-          <v-expansion-panel-content class="text-wrap full-height" v-else-if="content.url">
-            <i-frame :url="content.url" />
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-      </v-expansion-panels>
+      <v-container>
+        <wordpress v-if="item.post" :post="item.post" />
+        <i-frame v-else-if="item.url" :url="item.url" />
+      </v-container>
     </div>
   </div>
 </template>
 <script>
-import Wordpress from "@/components/Wordpress";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Wordpress from "@/components/Wordpress";
 import upperCaseFirstLetter from "@/lib/upperCaseFirstLetter.js";
 import IFrame from "@/components/IFrame/Index";
 export default {
   name: "ContentItem",
   components: {
-    Wordpress,
     Breadcrumbs,
+    Wordpress,
     IFrame
   },
   props: ["id", "item"],

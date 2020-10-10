@@ -8,3 +8,5 @@ export const keluargaContentCollection = keluargaId =>
 export const umumCollection = new Firestore("umum");
 
 export const umumContentCollection = umumId => new Firestore(`umum/${umumId}/contents`);
+
+export const khotbahCollection = new Firestore("khotbah");
