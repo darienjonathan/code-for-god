@@ -31,6 +31,16 @@ export default [
     title: "33 Renungan Natal Inspiratif",
     text: "33 Renungan Natal inspiratif untuk mengalami masa-masa Adven yang bermakna",
     to: "/renungan"
+  },
+  {
+    name: "kingstoneKit",
+    title: "Kingstone Kit",
+    text: "Tentang Komik Kingstone"
+  },
+  {
+    name: "sabdaMediaKit",
+    title: "SABDA Me+DIA Kit",
+    text: "Tentang SABDA Me+DIA Kit"
   }
 ];
 
