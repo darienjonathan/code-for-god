@@ -9,12 +9,19 @@ export default {
   },
   getters: {
     getItem(state) {
-      return ItemUid => state.ItemArr.find(([uid, Item]) => ItemUid === uid);
+      return itemUid => {
+        const item = state.items.find(([uid, item]) => itemUid === uid);
+        return item ? item[1] : undefined;
+      };
     },
     getContent(state, getters) {
-      return (ItemUid, contentUid) => {
-        const Item = getters.getItem(ItemUid);
-        return Item.contents.find(([uid, content]) => contentUid === uid);
+      return (itemUid, contentUid) => {
+        const item = getters.getItem(itemUid);
+        if (!item) {
+          return undefined;
+        }
+        const content = item.contents.find(([uid, content]) => contentUid === uid);
+        return content ? content[1] : undefined;
       };
     }
   }
