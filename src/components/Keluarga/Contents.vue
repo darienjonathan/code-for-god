@@ -1,20 +1,15 @@
 <template>
-  <div v-if="keluargaDocs.length">
+  <div v-if="items.length">
     <v-container fluid>
       <v-row>
-        <v-col
-          d-flex
-          class="col-12 col-lg-4"
-          v-for="([uid, keluarga], index) in keluargaDocs"
-          :key="uid"
-        >
+        <v-col d-flex class="col-12 col-lg-4" v-for="([uid, item], index) in items" :key="uid">
           <v-card elevation="8" height="100%">
             <v-card-title>Hari {{ index + 1 }}</v-card-title>
-            <v-card-subtitle>{{ keluarga.ts.str }}</v-card-subtitle>
+            <v-card-subtitle>{{ item.ts.str }}</v-card-subtitle>
             <v-timeline dense>
               <v-timeline-item
                 small
-                v-for="[contentUid, content] in keluarga.contents"
+                v-for="[contentUid, content] in item.contents"
                 :key="contentUid"
               >
                 {{ content.title }}
@@ -29,6 +24,7 @@
 <script>
 import { keluargaCollection, keluargaContentCollection } from "@/lib/firestore/collections";
 import dayjs from "@/lib/dayjs";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Contents",
@@ -53,7 +49,13 @@ export default {
       doc.ts.str = time.format("dddd, D MMMM YYYY");
       doc.contents = contentDocs[index];
     });
-    this.keluargaDocs = keluargaDocs;
+    this.setItems(keluargaDocs);
+  },
+  computed: {
+    ...mapState("keluarga", ["items"])
+  },
+  methods: {
+    ...mapMutations("keluarga", ["setItems"])
   }
 };
 </script>

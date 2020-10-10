@@ -15,6 +15,11 @@ const routes = [
     name: "Keluarga",
     component: Keluarga
   }
+  // {
+  //   path: "/keluarga/:id",
+  //   name: "KeluargaContent",
+  //   component: KeluargaContent
+  // }
 ];
 
 const router = new VueRouter({
