@@ -6,7 +6,7 @@ import { mapGetters } from "vuex";
 import ContentItem from "@/components/ContentItem";
 import { getPost } from "@/api/index";
 export default {
-  name: "KeluargaItem",
+  name: "UmumItem",
   components: {
     ContentItem
   },
@@ -21,7 +21,7 @@ export default {
     this.prepareItem();
   },
   computed: {
-    ...mapGetters("keluarga", ["getItem"])
+    ...mapGetters("umum", ["getItem"])
   },
   methods: {
     async prepareItem() {

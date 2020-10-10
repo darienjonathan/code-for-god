@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-row>
         <v-col d-flex class="col-12 col-md-4 col-lg-3" v-for="[uid, item] in items" :key="uid">
-          <router-link class="router-link" :to="`/keluarga/${uid}`">
+          <router-link class="router-link" :to="`/${contentUrl}/${uid}`">
             <v-card elevation="8" height="100%">
               <v-card-title>{{ item.ts.dateNum }}</v-card-title>
               <v-card-subtitle>{{ item.ts.str }}</v-card-subtitle>
@@ -24,13 +24,9 @@
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
-
 export default {
   name: "Contents",
-  computed: {
-    ...mapState("keluarga", ["items"])
-  }
+  props: ["items", "contentUrl"]
 };
 </script>
 <style lang="scss" scoped>
