@@ -9,6 +9,9 @@ import Khotbah from "@/views/Khotbah.vue";
 import KhotbahItem from "@/views/KhotbahItem.vue";
 import Renungan from "@/views/Renungan.vue";
 import RenunganItem from "@/views/RenunganItem.vue";
+import DiyChristmas from "@/views/DiyChristmas.vue";
+import Kingstone from "@/views/Kingstone.vue";
+import SabdaMediaKit from "@/views/SabdaMediaKit.vue";
 
 Vue.use(VueRouter);
 
@@ -57,6 +60,21 @@ const routes = [
     path: "/renungan/:id",
     name: "RenunganItem",
     component: RenunganItem
+  },
+  {
+    path: "/kingstone",
+    name: "Kingstone",
+    component: Kingstone
+  },
+  {
+    path: "/sabda-media-kit",
+    name: "SabdaMediaKit",
+    component: SabdaMediaKit
+  },
+  {
+    path: "/diy-christmas",
+    name: "DiyChristmas",
+    component: DiyChristmas
   }
 ];
 

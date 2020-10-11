@@ -11,7 +11,12 @@
     </div>
     <v-container fluid>
       <v-row>
-        <v-col d-flex class="col-12 col-md-4" v-for="(content, index) in contentArr" :key="index">
+        <v-col
+          d-flex
+          class="col-12 col-sm-6 col-md-4"
+          v-for="(content, index) in contentArr"
+          :key="index"
+        >
           <router-link class="router-link" :to="`${content.to || ''}`">
             <v-card elevation="8" height="100%">
               <v-card-title>{{ content.title }}</v-card-title>
