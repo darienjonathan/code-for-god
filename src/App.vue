@@ -44,7 +44,10 @@ import {
   umumCollection,
   umumContentCollection,
   khotbahCollection,
-  renunganCollection
+  renunganCollection,
+  diyChristmasCollection,
+  kingstoneCollection,
+  sabdaMediaKitCollection
 } from "@/lib/firestore/collections";
 import dayjs from "@/lib/dayjs";
 import { mapMutations } from "vuex";
@@ -62,6 +65,9 @@ export default {
     this.prepareUmum();
     this.prepareKhotbah();
     this.prepareRenungan();
+    this.prepareDiyChristmas();
+    this.prepareSabdaMediaKit();
+    this.prepareKingstone();
     this.prepareContentArr();
   },
   watch: {
@@ -84,6 +90,15 @@ export default {
     }),
     ...mapMutations("renungan", {
       setRenunganItems: "setItems"
+    }),
+    ...mapMutations("kingstone", {
+      setKingstoneItem: "setItem"
+    }),
+    ...mapMutations("sabdaMediaKit", {
+      setSabdaMediaKitItem: "setItem"
+    }),
+    ...mapMutations("diyChristmas", {
+      setDiyChristmasItem: "setItem"
     }),
     prepareContentArr() {
       this.contentArr = this.$route.name === "Top" ? contents : [topContent, ...contents];
@@ -147,6 +162,18 @@ export default {
         doc.subtitle = time.format("dddd, D MMMM YYYY");
       });
       this.setRenunganItems(renunganDocs);
+    },
+    async prepareKingstone() {
+      const kingstoneDoc = await kingstoneCollection.loadDocument();
+      this.setKingstoneItem(kingstoneDoc);
+    },
+    async prepareDiyChristmas() {
+      const diyChristmasDoc = await diyChristmasCollection.loadDocument();
+      this.setDiyChristmasItem(diyChristmasDoc);
+    },
+    async prepareSabdaMediaKit() {
+      const sabdaMediaKitDoc = await sabdaMediaKitCollection.loadDocument();
+      this.setSabdaMediaKitItem(sabdaMediaKitDoc);
     }
   }
 };

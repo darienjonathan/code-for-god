@@ -17,7 +17,8 @@ export default [
     name: "diyChristmas",
     title: "DIY Christmas",
     text:
-      "Pilih sendiri berbagai bahan Natal digital yang tersedia dalam berbagai format untuk mengalami Natal yang bermakna!"
+      "Pilih sendiri berbagai bahan Natal digital yang tersedia dalam berbagai format untuk mengalami Natal yang bermakna!",
+    to: "/diy-christmas"
   },
   {
     name: "khotbah",
@@ -35,13 +36,15 @@ export default [
   {
     name: "kingstoneKit",
     title: "Kingstone Kit",
-    text: "Paket Natal dari Kingstone Indonesia"
+    text: "Paket Natal dari Kingstone Indonesia",
+    to: "/kingstone"
   },
   {
     name: "sabdaMediaKit",
     title: "SABDA Me+DIA Kit",
     text:
-      "Kumpulan berbagai macam bahan audiovisual yang bercerita tentang kelahiran Kristus Sang Juru  Selamat"
+      "Kumpulan berbagai macam bahan audiovisual yang bercerita tentang kelahiran Kristus Sang Juru Selamat",
+    to: "/sabda-media-kit"
   }
 ];
 
