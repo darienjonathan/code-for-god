@@ -3,14 +3,14 @@ export default [
     name: "keluarga",
     title: "Natal Bersama Keluarga",
     text:
-      "Mari rayakan masa-masa adven 2020 dengan berbagai aktivitas yang menyenangkan bersama seluruh anggota keluarga bersama melalui beraneka jenis bahan yang tersedia dan disertai dengan panduan aktifitas yang lengkap",
+      "Hari demi hari melakukan aktivitas yang menyenangkan bersama seluruh anggota keluarga melalui aneka bahan Natal digital yang tersedia disertai dengan panduan aktifitas yang lengkap",
     to: "/keluarga"
   },
   {
     name: "umum",
     title: "Natal Setiap Hari",
     text:
-      "Temukan makna dari kelahiran Kristus setiap hari dengan berbagai bahan Natal digital yang sangat kaya dan menarik!",
+      "Menemukan makna dari kelahiran Kristus setiap hari dengan berbagai bahan digital yang sangat kaya dan menarik bersama paket Bahan Natal Digital 2020",
     to: "/umum"
   },
   {
@@ -35,12 +35,13 @@ export default [
   {
     name: "kingstoneKit",
     title: "Kingstone Kit",
-    text: "Tentang Komik Kingstone"
+    text: "Paket Natal dari Kingstone Indonesia"
   },
   {
     name: "sabdaMediaKit",
     title: "SABDA Me+DIA Kit",
-    text: "Tentang SABDA Me+DIA Kit"
+    text:
+      "Kumpulan berbagai macam bahan audiovisual yang bercerita tentang kelahiran Kristus Sang Juru  Selamat"
   }
 ];
 
