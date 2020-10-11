@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="hero flex justify-center">
       <div class="text-h3 text-md-h2 text-lg-h1 flex text-center title font-weight-black">
-        PAKET NATAL
+        PAKET NATAL ONLINE 2020
       </div>
       <div class="text-h6 text-lg-h5 flex text-center subtitle mt-4 px-8">
         Cara baru bagi gereja dan orang percaya untuk merayakan masa Advent dan Natal tahun 2020

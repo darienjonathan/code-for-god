@@ -8,5 +8,11 @@ module.exports = {
         "@": path.join(__dirname, "src")
       }
     }
+  },
+  chainWebpack: config => {
+    config.plugin("html").tap(args => {
+      args[0].title = "Paket Natal Online 2020";
+      return args;
+    });
   }
 };
