@@ -3,8 +3,12 @@ import { getFirebaseFirestore } from "@/lib/firebase";
 export default class Firestore {
   firestore = getFirebaseFirestore();
   path;
-  constructor(path) {
+  singleDocId;
+  constructor({ path, singleDocId }) {
     this.path = path;
+    if (singleDocId) {
+      this.singleDocId = singleDocId;
+    }
   }
 
   getRef() {
@@ -50,6 +54,7 @@ export default class Firestore {
   }
 
   async loadDocument(id) {
+    id = this.singleDocId || id;
     const snapshot = await this.getRef()
       .doc(id)
       .get();
@@ -57,6 +62,7 @@ export default class Firestore {
   }
 
   subscribeDocument(fn, id) {
+    id = this.singleDocId || id;
     return this.getRef()
       .doc(id)
       .onSnapshot()
