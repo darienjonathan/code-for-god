@@ -12,6 +12,14 @@ import RenunganItem from "@/views/RenunganItem.vue";
 import DiyChristmas from "@/views/DiyChristmas.vue";
 import Kingstone from "@/views/Kingstone.vue";
 import SabdaMediaKit from "@/views/SabdaMediaKit.vue";
+import Bioskop from "@/views/Bioskop.vue";
+import BioskopItem from "@/views/BioskopItem.vue";
+import Games from "@/views/Games.vue";
+import GamesItem from "@/views/GamesItem.vue";
+import Karaoke from "@/views/Karaoke.vue";
+import KaraokeItem from "@/views/KaraokeItem.vue";
+import Liturgi from "@/views/Liturgi.vue";
+import LiturgiItem from "@/views/LiturgiItem.vue";
 
 Vue.use(VueRouter);
 
@@ -75,6 +83,46 @@ const routes = [
     path: "/diy-christmas",
     name: "DiyChristmas",
     component: DiyChristmas
+  },
+  {
+    path: "/bioskop",
+    name: "Bioskop",
+    component: Bioskop
+  },
+  {
+    path: "/bioskop/:id",
+    name: "BioskopItem",
+    component: BioskopItem
+  },
+  {
+    path: "/karaoke",
+    name: "Karaoke",
+    component: Karaoke
+  },
+  {
+    path: "/karaoke/:id",
+    name: "KaraokeItem",
+    component: KaraokeItem
+  },
+  {
+    path: "/games",
+    name: "Games",
+    component: Games
+  },
+  {
+    path: "/games/:id",
+    name: "GamesItem",
+    component: GamesItem
+  },
+  {
+    path: "/liturgi",
+    name: "Liturgi",
+    component: Liturgi
+  },
+  {
+    path: "/liturgi/:id",
+    name: "LiturgiItem",
+    component: LiturgiItem
   }
 ];
 
