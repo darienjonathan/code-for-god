@@ -47,7 +47,12 @@ import {
   renunganCollection,
   diyChristmasCollection,
   kingstoneCollection,
-  sabdaMediaKitCollection
+  sabdaMediaKitCollection,
+  karaokeCollection,
+  karaokeContentCollection,
+  bioskopCollection,
+  gamesCollection,
+  liturgiCollection
 } from "@/lib/firestore/collections";
 import dayjs from "@/lib/dayjs";
 import { mapMutations } from "vuex";
@@ -68,6 +73,10 @@ export default {
     this.prepareDiyChristmas();
     this.prepareSabdaMediaKit();
     this.prepareKingstone();
+    this.prepareKaraoke();
+    this.prepareBioskop();
+    this.prepareGames();
+    this.prepareLiturgi();
     this.prepareContentArr();
   },
   watch: {
@@ -99,6 +108,18 @@ export default {
     }),
     ...mapMutations("diyChristmas", {
       setDiyChristmasItem: "setItem"
+    }),
+    ...mapMutations("karaoke", {
+      setKaraokeItems: "setItems"
+    }),
+    ...mapMutations("bioskop", {
+      setBioskopItems: "setItems"
+    }),
+    ...mapMutations("games", {
+      setGamesItems: "setItems"
+    }),
+    ...mapMutations("liturgi", {
+      setLiturgiItems: "setItems"
     }),
     prepareContentArr() {
       this.contentArr = this.$route.name === "Top" ? contents : [topContent, ...contents];
@@ -163,6 +184,63 @@ export default {
       });
       this.setRenunganItems(renunganDocs);
     },
+
+    async prepareKaraoke() {
+      const karaokeDocs = await karaokeCollection.loadCollection({
+        orderBy: ["ts", "asc"]
+      });
+      const contentDocs = await Promise.all(
+        karaokeDocs.map(([uid, doc]) =>
+          karaokeContentCollection(uid).loadCollection({
+            orderBy: ["order", "asc"]
+          })
+        )
+      );
+      karaokeDocs.map(([uid, doc], index) => {
+        const time = dayjs.unix(doc.ts.seconds);
+        doc.title = `Hari ${index + 1} ${doc.title ? "- " + doc.title : ""}`;
+        doc.subtitle = time.format("dddd, D MMMM YYYY");
+        doc.contents = contentDocs[index];
+      });
+      this.setKaraokeItems(karaokeDocs);
+    },
+
+    async prepareBioskop() {
+      const bioskopDocs = await bioskopCollection.loadCollection({
+        orderBy: ["ts", "asc"]
+      });
+      bioskopDocs.map(([uid, doc], index) => {
+        const time = dayjs.unix(doc.ts.seconds);
+        doc.title = `Hari ${index + 1} ${doc.title ? "- " + doc.title : ""}`;
+        doc.subtitle = time.format("dddd, D MMMM YYYY");
+      });
+      this.setBioskopItems(bioskopDocs);
+    },
+
+    async prepareGames() {
+      const gamesDocs = await gamesCollection.loadCollection({
+        orderBy: ["ts", "asc"]
+      });
+      gamesDocs.map(([uid, doc], index) => {
+        const time = dayjs.unix(doc.ts.seconds);
+        doc.title = `Hari ${index + 1} ${doc.title ? "- " + doc.title : ""}`;
+        doc.subtitle = time.format("dddd, D MMMM YYYY");
+      });
+      this.setGamesItems(gamesDocs);
+    },
+
+    async prepareLiturgi() {
+      const liturgiDocs = await liturgiCollection.loadCollection({
+        orderBy: ["ts", "asc"]
+      });
+      liturgiDocs.map(([uid, doc], index) => {
+        const time = dayjs.unix(doc.ts.seconds);
+        doc.title = `Hari ${index + 1} ${doc.title ? "- " + doc.title : ""}`;
+        doc.subtitle = time.format("dddd, D MMMM YYYY");
+      });
+      this.setLiturgiItems(liturgiDocs);
+    },
+
     async prepareKingstone() {
       const kingstoneDoc = await kingstoneCollection.loadDocument();
       this.setKingstoneItem(kingstoneDoc);

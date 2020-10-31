@@ -7,6 +7,11 @@ import umum from "@/store/umum";
 import kingstone from "@/store/kingstone";
 import sabdaMediaKit from "@/store/sabdaMediaKit";
 import diyChristmas from "@/store/diyChristmas";
+// --------------------------------------
+import karaoke from "@/store/karaoke";
+import bioskop from "@/store/bioskop";
+import games from "@/store/games";
+import liturgi from "@/store/liturgi";
 
 Vue.use(Vuex);
 
@@ -39,6 +44,22 @@ export default new Vuex.Store({
     diyChristmas: {
       namespaced: true,
       ...diyChristmas
+    },
+    karaoke: {
+      namespaced: true,
+      ...karaoke
+    },
+    bioskop: {
+      namespaced: true,
+      ...bioskop
+    },
+    games: {
+      namespaced: true,
+      ...games
+    },
+    liturgi: {
+      namespaced: true,
+      ...liturgi
     }
   }
 });

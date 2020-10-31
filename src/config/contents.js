@@ -34,7 +34,7 @@ export default [
     to: "/renungan"
   },
   {
-    name: "kingstoneKit",
+    name: "kingstone",
     title: "Kingstone Kit",
     text: "Paket Natal dari Kingstone Indonesia",
     to: "/kingstone"
@@ -45,6 +45,34 @@ export default [
     text:
       "Kumpulan berbagai macam bahan audiovisual yang bercerita tentang kelahiran Kristus Sang Juru Selamat",
     to: "/sabda-media-kit"
+  },
+  {
+    name: "bioskop",
+    title: "Bioskop Natal",
+    text:
+      "Kumpulan berbagai macam bahan video yang bercerita tentang kelahiran Kristus Sang Juru Selamat",
+    to: "/bioskop"
+  },
+  {
+    name: "karaoke",
+    title: "Karaoke Natal",
+    text:
+      "Kumpulan lantunan lagu natal dalam sebulan",
+    to: "/karaoke"
+  },
+  {
+    name: "games",
+    title: "Act & Games",
+    text:
+      "Berisi aktivitas menyenangkan yang dapat dilakukan dalam keluarga",
+    to: "/games"
+  },
+  {
+    name: "liturgi",
+    title: "Liturgi Natal",
+    text:
+      "Kumpulan liturgi natal dari berbagai denominasi gereja",
+    to: "/liturgi"
   }
 ];
 
